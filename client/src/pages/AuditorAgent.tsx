@@ -205,88 +205,130 @@ export default function AuditorAgent() {
   );
 
   return (
-    <>
-      <div className="relative min-h-screen bg-black text-white">
-        <Navbar />
-        <main className="relative z-10 pt-24 pb-20">
+    <div className="relative min-h-screen bg-black text-white">
+      <Navbar isScrolled={false} />
+      <main className="relative z-10">
+        <section className="pt-24 pb-20">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="space-y-6">
-              <Card className="border-orange-500/20 bg-orange-900/10">
-              <CardHeader>
-                <CardTitle className="text-xl">Contract Auditor</CardTitle>
-                <CardDescription>
-                  Paste your Clarity contract code below to analyze for vulnerabilities, generate tests, and view metrics
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <Textarea
-                    value={contractCode}
-                    onChange={(e) => setContractCode(e.target.value)}
-                    placeholder="Paste your Clarity contract code here..."
-                    className="min-h-[200px] font-mono"
-                  />
-                  <Button 
-                    onClick={handleAnalyze}
-                    disabled={analyzeMutation.isPending}
-                  >
-                    {analyzeMutation.isPending ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    ) : (
-                      <Sparkles className="mr-2 h-4 w-4" />
-                    )}
-                    Analyze Contract
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {error && (
-              <div className="text-red-500">
-                Error: {error}
+            {/* Header Section */}
+            <div className="text-center">
+              <div className="inline-block px-4 py-1.5 mb-4 rounded-full text-sm font-medium 
+                bg-orange-500/10 border border-orange-500/20 animate-in fade-in slide-in-from-bottom-3">
+                <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+                  AI-Powered Smart Contract Auditing 🔍
+                </span>
               </div>
-            )}
 
-            {analyzeMutation.data && (
-              <Card className="border-orange-500/20 bg-orange-900/10">
-                <CardContent className="p-6">
-                  <Tabs defaultValue="insights">
-                    <TabsList>
-                      <TabsTrigger value="insights">
-                        <ShieldCheck className="mr-2 h-4 w-4" />
-                        Insights
-                      </TabsTrigger>
-                      <TabsTrigger value="security">
-                        <AlertCircle className="mr-2 h-4 w-4" />
-                        Security
-                      </TabsTrigger>
-                    </TabsList>
-                    
-                    <TabsContent value="insights">
-                      <pre>{JSON.stringify(analyzeMutation.data, null, 2)}</pre>
-                    </TabsContent>
-                    
-                    <TabsContent value="security">
-                      <div>
-                        <h3>Security Analysis</h3>
-                        <div>Risk Level: {analyzeMutation.data.overallRisk}</div>
-                        {analyzeMutation.data.issues?.map((issue: any, i: number) => (
-                          <div key={i} className="mt-4">
-                            <h4>Issue {i + 1}</h4>
-                            <p>{issue.description}</p>
-                            <p>Severity: {issue.severity}</p>
-                          </div>
-                        ))}
+              <div className="mb-12 space-y-6">
+                <h1 className="text-5xl sm:text-6xl font-black tracking-tight leading-tight">
+                  Contract
+                  <br />
+                  <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+                    Security Auditor
+                  </span>
+                </h1>
+                <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                  Analyze your Clarity smart contracts for vulnerabilities and best practices
+                </p>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+              {/* Left Column */}
+              <div className="space-y-6">
+                <Card className="border-orange-500/20 bg-orange-900/10 backdrop-blur-sm">
+                  <CardHeader className="space-y-2 p-4 sm:p-6">
+                    <CardTitle className="text-xl sm:text-2xl text-white">Contract Analysis</CardTitle>
+                    <CardDescription className="text-sm sm:text-base text-white/60">
+                      Paste your contract code for security analysis
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-6 p-4 sm:p-6">
+                    <Textarea
+                      value={contractCode}
+                      onChange={(e) => setContractCode(e.target.value)}
+                      placeholder="Paste your Clarity contract code here..."
+                      className="min-h-[300px] font-mono bg-orange-500/10 border-orange-500/20 
+                        text-white placeholder:text-white/40 resize-none focus:border-orange-500/40"
+                    />
+                    <Button 
+                      onClick={handleAnalyze}
+                      disabled={analyzeMutation.isPending}
+                      className="w-full bg-orange-600/90 text-white hover:bg-orange-500
+                        border border-orange-500/30 shadow-lg shadow-orange-500/20
+                        transition-all duration-200 hover:scale-[1.02] h-12"
+                    >
+                      {analyzeMutation.isPending ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Analyzing Contract...
+                        </>
+                      ) : (
+                        <>
+                          <Sparkles className="mr-2 h-5 w-5" />
+                          Analyze Contract
+                        </>
+                      )}
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {error && (
+                  <Card className="border-red-500/20 bg-red-900/10">
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-2 text-red-400">
+                        <AlertCircle className="h-5 w-5 mt-0.5" />
+                        <p>{error}</p>
                       </div>
-                    </TabsContent>
-                  </Tabs>
-                </CardContent>
-              </Card>
-            )}
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+
+              {/* Right Column */}
+              {analyzeMutation.data && (
+                <div className="space-y-6">
+                  <Card className="border-orange-500/20 bg-orange-900/10 backdrop-blur-sm">
+                    <CardHeader>
+                      <CardTitle className="text-white">Analysis Results</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <Tabs defaultValue="security" className="space-y-4">
+                        <TabsList className="bg-orange-500/10 border border-orange-500/20">
+                          <TabsTrigger value="security" className="data-[state=active]:bg-orange-500">
+                            <ShieldCheck className="mr-2 h-4 w-4" />
+                            Security
+                          </TabsTrigger>
+                          <TabsTrigger value="insights" className="data-[state=active]:bg-orange-500">
+                            <Target className="mr-2 h-4 w-4" />
+                            Insights
+                          </TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="security">
+                          {renderSecurityIssues()}
+                        </TabsContent>
+                        <TabsContent value="insights">
+                          {renderInsights()}
+                        </TabsContent>
+                      </Tabs>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-orange-500/20 bg-orange-900/10 backdrop-blur-sm">
+                    <CardHeader>
+                      <CardTitle className="text-white">Contract Metrics</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {renderMetrics()}
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
-  </>
-);
+  );
 }

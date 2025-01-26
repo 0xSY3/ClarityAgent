@@ -43,7 +43,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
               <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
             </div>
             <span className="text-lg sm:text-xl font-bold text-white">
-              Stacks<span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">AI</span>
+              Clarity<span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Agent</span>
             </span>
           </Link>
 

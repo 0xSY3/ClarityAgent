@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code2, BarChart2, FileCode, Shield, TestTubeIcon, Brain, Zap } from "lucide-react";
+import { ArrowRight, Code2, BarChart2, FileCode, Shield, TestTubeIcon, Brain, Zap, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
 
 import { Navbar } from "@/components/ui/navbar";
@@ -96,11 +96,11 @@ export default function Home() {
       buttonText: "Decode Contract"
     },
     {
-      href: "/templates",
-      icon: FileCode,
-      title: "Contract Templates",
-      description: "Curated library of Stacks contract templates and patterns",
-      buttonText: "Browse Templates"
+      href: "/auditor",
+      icon: ShieldCheck,
+      title: "Auditor Agent",
+      description: "AI-powered security analysis and vulnerability detection for Clarity contracts",
+      buttonText: "Audit Contract"
     },
     {
       href: "/explorer",
@@ -170,6 +170,7 @@ export default function Home() {
               {features.map((feature, index) => (
                 <FeatureCard key={index} {...feature} />
               ))}
+              
             </div>
           </div>
         </section>

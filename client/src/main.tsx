@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from "@/components/ui/toaster";
-import Navbar from "./components/Navbar";
+import { Navbar } from "@/components/ui/navbar";
 import Home from "./pages/Home";
 import ContractBuilder from "./pages/ContractBuilder";
 import Decoder from "./pages/Decoder";
@@ -22,12 +22,12 @@ function Router() {
         <Route path="/" component={Home} />
         <Route>
           <div className="min-h-screen bg-black">
-            <Navbar />
+            <Navbar isScrolled={false} />
             <main className="px-4 py-8">
               <Switch>
                 <Route path="/contract-builder" component={ContractBuilder} />
                 <Route path="/decoder" component={Decoder} />
-                <Route path="/templates" component={AuditorAgent} />
+                <Route path="/auditor" component={AuditorAgent} />
                 <Route path="/assistant" component={MNTAIAssistant} />
                 <Route path="/explorer" component={ContractExplorer} />
                 <Route path="/test-suite" component={TestSuiteGenerator} />

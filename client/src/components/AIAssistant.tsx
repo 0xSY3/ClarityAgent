@@ -33,6 +33,7 @@ export default function NetworkAssistant() {
     text: '',
     fullText: ''
   });
+  const [isScrolled, setIsScrolled] = useState(false);
   
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
   const { toast } = useToast();
@@ -59,6 +60,14 @@ export default function NetworkAssistant() {
       setMessages(prev => [...prev, { role: 'assistant', content: typing.fullText }]);
     }
   }, [typing]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -96,8 +105,8 @@ export default function NetworkAssistant() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white">
-      <Navbar />
+    <div className="relative min-h-screen bg-black text-white">
+      <Navbar isScrolled={isScrolled} />
       <main className="flex-1 flex flex-col container mx-auto px-4 pt-20 pb-4">
         <div className="flex-1 flex flex-col bg-orange-900/10 border border-orange-500/20 rounded-lg overflow-hidden">
           {/* Header */}

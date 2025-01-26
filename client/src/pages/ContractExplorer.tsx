@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/ui/navbar";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -39,11 +39,20 @@ export default function ContractExplorer() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { toast } = useToast();
   const [contractCode, setContractCode] = useState("");
   const [contractABI, setContractABI] = useState<any>(null);
   const [isVerified, setIsVerified] = useState(false);
   const [decompiled, setDecompiled] = useState<string | undefined>();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleConnect = async () => {
     if (!address) return;
@@ -154,7 +163,7 @@ export default function ContractExplorer() {
   return (
     <div className="relative min-h-screen bg-black text-white">
       
-      <Navbar />
+      <Navbar isScrolled={isScrolled} />
         
       <main className="relative z-10 pt-20 sm:pt-24 pb-16 sm:pb-20 space-y-6 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center space-y-4">
