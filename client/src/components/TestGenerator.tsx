@@ -7,6 +7,7 @@ import { CodeViewer } from '@/components/ui/code-viewer';
 interface TestGeneratorProps {
   tests: ClarityTest[];
   isLoading: boolean;
+  contractcode: string;
 }
 
 const TestGenerator: React.FC<TestGeneratorProps> = ({ tests, isLoading }) => {
