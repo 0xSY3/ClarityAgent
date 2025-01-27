@@ -7,7 +7,7 @@ Clarity Agent is a comprehensive suite of AI-powered tools designed to streamlin
 ![Clarity Agent Preview](client/preview.png)
 
 ## 🎥 Demo Video
-Check out our demo video to see Clarity Agent in action: [Watch Demo](https://youtube.com/)
+Check out our demo video to see Clarity Agent in action: [Watch Demo]([https://youtube.com/](https://youtu.be/rZAjNDlkY4Q))
 
 ## ✨ Core Features
 
