@@ -4,7 +4,7 @@
 
 Clarity Agent is a comprehensive suite of AI-powered tools designed to streamline the development, testing, and deployment of smart contracts on the Stacks blockchain. By combining cutting-edge artificial intelligence with blockchain expertise, we provide developers with an intuitive platform to build secure and efficient Clarity contracts.
 
-![Clarity Agent Preview](client/public/preview.png)
+![Clarity Agent Preview](client/preview.png)
 
 ## ✨ Core Features
 
