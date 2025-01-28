@@ -238,21 +238,6 @@ npm run test
 curl http://localhost:3000/health
 ```
 
-### Advanced Configuration
-
-
-1. **Setup**
-```bash
-# Initialize local Stacks blockchain
-clarity-cli initialize
-
-# Start development chain
-clarity-cli start --devnet
-
-# Deploy test contracts
-npm run deploy:contracts:dev
-```
-
 ## 📁 Project Structure
 
 ```
