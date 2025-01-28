@@ -254,9 +254,6 @@ clarity-agent/
 │   ├── routes/           # API routes
 │   ├── config/           # Server configuration
 │   └── types/            # TypeScript definitions
-├── ml/                   # Machine learning service
-│   ├── models/          # Pre-trained models
-│   └── src/             # ML service code
 └── db/                   # Database schema and migrations
 ```
 ## 👥 Team
