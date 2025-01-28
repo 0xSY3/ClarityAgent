@@ -274,6 +274,11 @@ clarity-agent/
 │   └── src/             # ML service code
 └── db/                   # Database schema and migrations
 ```
+## 👥 Team
+
+- [Sahil Wasnik](https://github.com/0xsy3)
+- [Shlok Jagtap](https://github.com/DeImOs-Sj)
+
 
 ## 🔮 Future Improvements
 
