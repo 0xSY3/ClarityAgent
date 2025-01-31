@@ -6,10 +6,6 @@ Clarity Agent is a comprehensive suite of AI-powered tools designed to streamlin
 
 ![Clarity Agent Preview](client/preview.png)
 
-## 🎥 Demo Video
-Check out our demo video to see Clarity Agent in action: [Watch Demo](https://youtu.be/rZAjNDlkY4Q)
-
-
 ## 🎯 Problem Statement
 
 Smart contract development on the Stacks blockchain presents several challenges:
