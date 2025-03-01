@@ -56,9 +56,9 @@ export const WalletConnector = () => {
     return (
       <Button
         onClick={disconnect}
-        className="px-4 py-2 bg-black/60 font-medium text-sm rounded-lg
-          border border-orange-500/20 text-orange-400 
-          hover:bg-orange-500/10 hover:border-orange-500/30
+        className="px-6 py-3 bg-orange-500 font-medium text-md rounded-lg
+          border border-orange-500/20 text-white
+          hover:bg-orange-600 hover:border-orange-500/30
           transition-all duration-300"
       >
         {shortAddress}
@@ -70,9 +70,9 @@ export const WalletConnector = () => {
     <Button
       onClick={connectWallet}
       disabled={loading}
-      className="px-4 py-2 bg-orange-500/10 font-medium text-sm rounded-lg
-        border border-orange-500/20 text-orange-400
-        hover:bg-orange-500/20 hover:border-orange-500/30
+      className="px-6 py-3 bg-orange-500 font-medium text-md rounded-lg
+        border border-orange-500/20 text-white
+        hover:bg-orange-600 hover:border-orange-500/30
         disabled:opacity-50 disabled:cursor-not-allowed
         transition-all duration-300"
     >

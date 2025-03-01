@@ -15,32 +15,32 @@ interface FeatureCardProps {
 }
 
 const StacksLogo = () => (
-  <img src="https://cdn.prod.website-files.com/618b0aafa4afde9048fe3926/65db8991bb7418d436a096d4_Group%206014%20(7)-p-500.png" alt="Stacks Logo" className="w-7 h-7" />
+  <img src="https://cdn.prod.website-files.com/618b0aafa4afde9048fe3926/65db8991bb7418d436a096d4_Group%206014%20(7)-p-500.png" alt="Stacks Logo" className="w-8 h-8" />
 );
 
 const FeatureCard = ({ href, icon: Icon, title, description, buttonText }: FeatureCardProps) => (
   <Link href={href}>
-    <Card className="h-full bg-black/40 border border-orange-800/90 backdrop-blur-sm 
-      hover:-translate-y-1 transition-all duration-300 group">
-      <CardHeader className="space-y-3 p-4 sm:p-6">
-        <CardTitle className="flex items-center space-x-3">
-          <div className="p-2 sm:p-2.5 rounded-xl bg-gradient-to-r from-orange-400/20 to-orange-600/20
-            transition-all duration-300 group-hover:from-orange-400/30 group-hover:to-orange-600/30">
-            <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-orange-400" />
+    <Card className="h-full bg-gradient-to-br from-gray-50 to-gray-100 border border-orange-200/80 shadow-lg
+      hover:-translate-y-1 transition-all duration-300 group rounded-xl">
+      <CardHeader className="space-y-4 p-6 sm:p-8">
+        <CardTitle className="flex items-center space-x-4">
+          <div className="p-3 rounded-xl bg-gradient-to-r from-orange-50 to-amber-100
+            transition-all duration-300 group-hover:from-orange-100 group-hover:to-amber-200 shadow-sm">
+            <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-orange-500" />
           </div>
-          <span className="font-semibold text-base sm:text-lg text-white/90">
+          <span className="font-semibold text-xl sm:text-2xl text-gray-800">
             {title}
           </span>
         </CardTitle>
-        <CardDescription className="text-sm sm:text-base text-white/60">
+        <CardDescription className="text-base sm:text-lg text-gray-600">
           {description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-4 sm:p-6 pt-0 sm:pt-0">
-        <Button className="w-full bg-orange-600/90 text-white hover:bg-orange-500 border border-orange-500/30 
-          shadow-lg shadow-orange-500/20 transition-all duration-300 group-hover:scale-[1.02]">
-          <span className="mr-2">{buttonText}</span>
-          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+      <CardContent className="p-6 sm:p-8 pt-0 sm:pt-0">
+        <Button className="w-full h-12 text-base bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 
+          shadow-md transition-all duration-300 group-hover:scale-[1.02] rounded-lg">
+          <span className="mr-3">{buttonText}</span>
+          <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
         </Button>
       </CardContent>
     </Card>
@@ -54,17 +54,17 @@ interface StatCardProps {
 }
 
 const StatCard = ({ value, label, icon: Icon }: StatCardProps) => (
-  <div className="px-4 py-5 sm:p-6 rounded-2xl bg-black/40 border border-orange-600/90 backdrop-blur-sm 
+  <div className="px-6 py-7 sm:p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border border-orange-200/80 shadow-lg
     hover:scale-105 transition-all duration-300">
     <div className="flex flex-col items-center text-center">
-      <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-        <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-        <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 
+      <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+        <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-orange-500" />
+        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 
           bg-clip-text text-transparent">
           {value}
         </span>
       </div>
-      <p className="text-sm sm:text-base text-gray-300 font-medium">{label}</p>
+      <p className="text-base sm:text-lg text-gray-700 font-medium">{label}</p>
     </div>
   </div>
 );
@@ -126,36 +126,38 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden bg-[length:20px_20px] bg-[linear-gradient(to_right,rgba(230,126,34,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(230,126,34,0.2)_1px,transparent_1px)]">
-      <div className="fixed inset-0 -z-50">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 overflow-hidden">
+      <div className="fixed inset-0 -z-50 opacity-30">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZWRkIj48ZyBmaWxsPSIjZWU3NzM2IiBmaWxsLW9wYWNpdHk9IjAuMSI+PHBhdGggZD0iTTM2IDM0djZoNnYtNmgtNnptMCAwdi02aC02djZoNnptLTE4IDE4di02aC02djZoNnptMCAwaDZ2LTZoLTZ2NnoiLz48L2c+PC9nPjwvc3ZnPg==')] bg-repeat"></div>
       </div>
+      
       <Navbar isScrolled={isScrolled} />
 
       <main className="relative z-10">
-        <section className="pt-24 pb-20">
-          <div className="max-w-6xl mx-auto px-6">
+        <section className="pt-32 pb-24">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
             <div className="text-center">
-              <div className="inline-block px-4 py-1 mb-4 rounded-full text-sm font-medium 
-                bg-orange-500/25 border border-orange-500/20 animate-in fade-in slide-in-from-bottom-3">
-                <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent flex items-center gap-2 font-bold">
+              <div className="inline-block px-6 py-2 mb-6 rounded-full text-base font-medium 
+                bg-gradient-to-r from-orange-100/80 to-amber-100/80 border border-orange-200/50 shadow-md animate-in fade-in slide-in-from-bottom-3">
+                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent flex items-center gap-3 font-bold">
                   AI-Powered Development on Stacks <StacksLogo />
                 </span>
               </div>
 
-              <div className="mb-8 sm:mb-10 space-y-4 sm:space-y-6">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight px-4">
+              <div className="mb-12 sm:mb-16 space-y-6 sm:space-y-8">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight text-gray-800">
                   Build Smarter
                   <br />
-                  <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent animate-text">
+                  <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 bg-clip-text text-transparent animate-text">
                     With AI on Stacks
                   </span>
                 </h1>
-                <p className="text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto text-gray-400 px-4">
+                <p className="text-xl sm:text-2xl md:text-3xl max-w-3xl mx-auto text-gray-600">
                   Intelligent tools for building and analyzing secure smart contracts on the Stacks blockchain
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto mb-6 px-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto mb-10">
                 <StatCard value="Automated" label="Testing Tools" icon={Shield} />
                 <StatCard value="AI" label="Contract Analysis" icon={Brain} />
                 <StatCard value="Instant" label="Deployment" icon={Zap} />
@@ -164,13 +166,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="features" className="py-12 sm:py-20 border-y border-orange-500/10">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <section id="features" className="py-16 sm:py-24 border-y border-orange-200/30 bg-gradient-to-b from-gray-100/50 to-gray-200/50 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {features.map((feature, index) => (
                 <FeatureCard key={index} {...feature} />
               ))}
-              
             </div>
           </div>
         </section>

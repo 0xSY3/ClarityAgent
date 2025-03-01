@@ -86,7 +86,7 @@ app.use((req, res, next) => {
     if (app.get("env") === "development") {
       await setupVite(app, server);
       // Development port
-      const PORT = 5000;
+      const PORT = 6969;
       server.listen(PORT, "0.0.0.0", () => {
         log(`Development server running on port ${PORT}`);
       });

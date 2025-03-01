@@ -9,6 +9,8 @@ build
 out
 .next
 server/public
+client/dist
+client/.vite
 
 # Environment files
 .env
@@ -17,6 +19,7 @@ server/public
 .env.test.local
 .env.production.local
 .env*.local
+server/.env
 
 # Debug logs
 npm-debug.log*
@@ -44,6 +47,7 @@ yarn-error.log*
 .eslintcache
 tsconfig.tsbuildinfo
 .tsbuildinfo
+.swc/
 
 # Testing
 coverage
@@ -58,6 +62,10 @@ Thumbs.db
 vite.config.ts.*
 *.config.backup.*
 *.tar.gz
+
+# Database files
+db/schema.ts
+db/migrations/
 
 # Misc
 *.log
