@@ -1,10 +1,16 @@
 import { Router } from 'express';
 import OpenAI from 'openai';
-import axios from 'axios'; // Add axios import
+import axios from 'axios';
 
 const router = Router();
-const DEEPSEEK_API_KEY = 'sk-e9a0aea0e5644f56bda348c649c26598';
-const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
+
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const DEEPSEEK_API_URL = process.env.DEEPSEEK_API_URL;
+
+if (!DEEPSEEK_API_KEY || !DEEPSEEK_API_URL) {
+  console.error('DEEPSEEK_API_KEY or DEEPSEEK_API_URL is not set in environment variables.');
+  // You might want to return an error here, or use a default value
+}
 
 const SYSTEM_MESSAGE = `You are ClarityAI, an AI assistant specialized in the Stacks blockchain ecosystem. You help users understand:
 
@@ -162,11 +168,16 @@ Return analysis in this format:
 
 // Helper function for Deepseek API calls
 async function callDeepseekAPI(messages: any[], temperature = 0.7, maxTokens = 2000) {
+  if (!DEEPSEEK_API_KEY || !DEEPSEEK_API_URL) {
+    console.error('DEEPSEEK_API_KEY or DEEPSEEK_API_URL is not set in environment variables.');
+    throw new Error('Internal Server Error: Deepseek API key or URL not configured.');
+  }
+
   const response = await axios.post(DEEPSEEK_API_URL, {
     messages,
     temperature,
     max_tokens: maxTokens,
-    model: 'deepseek-chat', // Use appropriate model name
+    model: 'deepseek-chat',
   }, {
     headers: {
       'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
@@ -323,7 +334,7 @@ Return the analysis in the specified JSON format with overview, purpose, feature
     res.json(summary);
   } catch (error) {
     console.error('Contract Summary Error:', error);
-    res.status(500).json({ error: 'Failed to generate contract summary' });
+    res.status(500).json({ error: error instanceof Error ? error.message : 'Failed to generate contract summary' });
   }
 });
 

@@ -11,6 +11,8 @@ export function useTypingEffect(text: string, speed: number = 10) {
     }
 
     setIsTyping(true);
+    setDisplayedText(""); // Reset text when input changes
+    
     let index = 0;
     const timer = setInterval(() => {
       if (index < text.length) {

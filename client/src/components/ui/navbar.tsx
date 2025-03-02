@@ -32,18 +32,18 @@ export function Navbar({ isScrolled }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 w-full bg-white/70 backdrop-blur-md py-3 sm:py-4 border-b-2 border-orange-500 border-opacity-100 z-50 transition-all duration-300 ${
-        scrollState ? "shadow-md" : ""
+      className={`fixed top-0 left-0 right-0 w-full bg-black/40 backdrop-blur-sm py-3 sm:py-4 border-b border-orange-600/90 z-50 transition-all duration-300 ${
+        scrollState ? "bg-black/60" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-orange-50 to-amber-100 flex items-center justify-center border border-orange-200 shadow-sm">
-              <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-orange-500/10 flex items-center justify-center border border-orange-500/20">
+              <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
             </div>
-            <span className="text-xl sm:text-2xl font-bold text-gray-800">
-              Clarity<span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Agent</span>
+            <span className="text-lg sm:text-xl font-bold text-white">
+              Clarity<span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Agent</span>
             </span>
           </Link>
 
@@ -53,7 +53,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-md font-medium text-gray-600 hover:text-orange-500 hover:-translate-y-0.5 transition-all duration-200"
+                className="text-sm font-medium text-gray-400 hover:text-orange-400 hover:-translate-y-0.5 transition-all duration-200"
               >
                 {item.label}
               </Link>
@@ -67,7 +67,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
             <Button
               variant="ghost"
               size="sm"
-              className="p-1 text-gray-600 hover:text-orange-500 focus:ring-0"
+              className="p-1 text-gray-400 hover:text-orange-400 focus:ring-0"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <span className="sr-only">Toggle menu</span>
@@ -88,12 +88,12 @@ export function Navbar({ isScrolled }: NavbarProps) {
               : "max-h-0 opacity-0 pointer-events-none"
           } overflow-hidden`}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 border-t border-orange-200/60 mt-2">
+          <div className="px-2 pt-2 pb-3 space-y-1 border-t border-orange-600/90 mt-2">
             {navItems.map((item) => (
               <Link key={item.label} href={item.href}>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-sm text-gray-600 hover:text-orange-500 hover:bg-orange-100/50"
+                  className="w-full justify-start text-sm text-gray-400 hover:text-orange-400 hover:bg-orange-500/5"
                 >
                   {item.label}
                 </Button>
